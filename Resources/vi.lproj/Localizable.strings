@@ -10,7 +10,7 @@
 "common.close"  = "Đóng";
 
 /* Menu bar */
-"menu.settings" = "Cài đặt…";
+"menu.settings" = "Cài đặt";
 "menu.quit"     = "Thoát";
 "menu.tooltip"  = "AISwitch — chuyển đổi nhiều tài khoản";
 

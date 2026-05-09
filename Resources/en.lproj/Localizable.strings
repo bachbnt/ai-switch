@@ -10,7 +10,7 @@
 "common.close"  = "Close";
 
 /* Menu bar */
-"menu.settings" = "Settings…";
+"menu.settings" = "Settings";
 "menu.quit"     = "Quit";
 "menu.tooltip"  = "AISwitch — multi-account switcher";
 
