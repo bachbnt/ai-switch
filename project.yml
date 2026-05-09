@@ -1,0 +1,64 @@
+# XcodeGen spec for AISwitch.
+# Regenerate AISwitch.xcodeproj with: `xcodegen generate`
+# (brew install xcodegen)
+
+name: AISwitch
+options:
+  bundleIdPrefix: com.bachbnt
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  defaultConfig: Debug
+  groupSortPosition: top
+  generateEmptyDirectories: false
+
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    # `minimal` is the default for Swift 5.10 production apps. We can dial
+    # this up to `complete` once we migrate to Swift 6 (`@MainActor static
+    # let shared = …` patterns get awkward under Swift 5.10's strict mode).
+    SWIFT_STRICT_CONCURRENCY: minimal
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    GCC_TREAT_WARNINGS_AS_ERRORS: YES
+    CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+    DEAD_CODE_STRIPPING: YES
+  configs:
+    Debug:
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG"
+    Release:
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+
+targets:
+  AISwitch:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+    resources:
+      # Point at the Resources directory as a whole, with excludes for the
+      # plist + entitlements (which are referenced via build settings,
+      # not as bundled resources). XcodeGen recursively scans the directory
+      # and auto-creates Xcode variant groups for any `.lproj` subfolder
+      # containing files with the same name (here: Localizable.strings).
+      # The build phase then compiles each variant into the matching
+      # <lang>.lproj/ inside the .app bundle.
+      - path: Resources
+        excludes:
+          - "Info.plist"
+          - "AISwitch.entitlements"
+    # Info.plist is hand-written at Resources/Info.plist and referenced via
+    # INFOPLIST_FILE in `settings.base` below. Leaving the `info:` block out
+    # so XcodeGen doesn't overwrite our handwritten plist.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.bachbnt.AISwitch
+        INFOPLIST_FILE: Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Resources/AISwitch.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMBINE_HIDPI_IMAGES: YES

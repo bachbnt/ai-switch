@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <!-- Hardcoded (not $(EXECUTABLE_NAME) etc.) so the bundle is valid even
+         if Xcode's INFOPLIST_EXPAND_BUILD_SETTINGS substitution doesn't run.
+         A wrong CFBundleExecutable is the #1 cause of macOS reporting an
+         app as "damaged or incomplete". -->
+    <key>CFBundleExecutable</key>
+    <string>AISwitch</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.bachbnt.AISwitch</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>AISwitch</string>
+    <key>CFBundleDisplayName</key>
+    <string>AISwitch</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <!-- Menu-bar-only: no Dock tile, no menu bar above the screen. -->
+    <key>LSUIElement</key>
+    <true/>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.developer-tools</string>
+    <!-- Languages we ship .lproj resources for. macOS uses this list to
+         decide which locale to surface in System Settings → Language &amp;
+         Region for this app. -->
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>vi</string>
+    </array>
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright (c) 2026 bachbnt. All rights reserved.</string>
+    <!-- We use Apple Events to quit/relaunch Claude.app and ChatGPT.app via
+         osascript. macOS prompts the user the first time. -->
+    <key>NSAppleEventsUsageDescription</key>
+    <string>AISwitch quits and relaunches Claude and ChatGPT to apply the active profile switch.</string>
+</dict>
+</plist>

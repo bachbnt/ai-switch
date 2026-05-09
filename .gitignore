@@ -1,0 +1,23 @@
+# Xcode
+build/
+dist/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+
+# XcodeGen — the project file is generated, project.yml is the source of truth.
+AISwitch.xcodeproj/
+
+# Swift Package Manager
+.build/
+Package.resolved
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp

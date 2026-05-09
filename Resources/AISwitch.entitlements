@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+      App Sandbox is OFF on purpose. AISwitch needs to:
+        - read/write ~/.claude and ~/.codex
+        - read/write ~/Library/Application Support/Claude and the ChatGPT bundle dir
+        - invoke /usr/bin/security to read/write Keychain items owned by other apps
+        - send Apple Events to Claude.app and ChatGPT.app (quit/relaunch)
+      The sandbox would block every one of those. Hardened Runtime stays on for
+      notarization.
+    -->
+    <key>com.apple.security.app-sandbox</key>
+    <false/>
+</dict>
+</plist>

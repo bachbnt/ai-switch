@@ -1,0 +1,84 @@
+/* AISwitch — English strings */
+
+/* Common */
+"common.ok"     = "OK";
+"common.cancel" = "Cancel";
+"common.save"   = "Save";
+"common.add"    = "Add";
+"common.edit"   = "Edit…";
+"common.delete" = "Delete";
+"common.close"  = "Close";
+
+/* Menu bar */
+"menu.settings" = "Settings…";
+"menu.quit"     = "Quit";
+"menu.tooltip"  = "AISwitch — multi-account switcher";
+
+/* Provider section */
+"provider.no_profiles"        = "No profiles yet";
+"provider.add_account_format" = "Add %@ Account";
+
+/* Errors */
+"error.switch_failed.title" = "Switch failed";
+"error.generic"             = "Something went wrong";
+
+/* Add / Edit profile sheet */
+"profile.title.new_format"   = "New %@ Profile";
+"profile.title.edit_format"  = "Edit %@ Profile";
+
+"profile.field.alias"        = "Alias";
+"profile.field.alias.hint"   = "Enterprise A";
+"profile.field.email"        = "Email (optional)";
+"profile.field.email.hint"   = "you@example.com";
+"profile.field.color"        = "Color";
+"profile.field.icon"         = "Icon";
+"profile.field.surfaces"     = "Surfaces";
+"profile.field.initial_state" = "Initial state";
+
+"profile.initial.capture" = "Capture from current state";
+"profile.initial.empty"   = "Empty profile (sign in later)";
+
+/* Surface kind labels */
+"surface.kind.cli"     = "CLI";
+"surface.kind.desktop" = "Desktop app";
+
+/* Settings */
+"settings.tab.providers" = "Providers";
+"settings.tab.general"   = "General";
+"settings.tab.about"     = "About";
+
+"settings.language"             = "Language";
+"settings.appearance"           = "Appearance";
+"settings.launch_at_login"      = "Launch AISwitch at login";
+"settings.launch_at_login.help" = "Wired up via SMAppService in the distribution-polish phase.";
+
+"settings.reminder.banner"     = "Reminder banner";
+"settings.reminder.every"      = "Every";
+"settings.reminder.hours_unit" = "h";
+"settings.force_relogin"       = "Force relogin instead of restoring snapshot";
+"settings.force_relogin.help"  = "Use only if a vendor's hardware-bound auth refuses snapshotted tokens.";
+
+/* Language / appearance values */
+"language.system"     = "System";
+"language.english"    = "English";
+"language.vietnamese" = "Tiếng Việt";
+
+"appearance.system" = "System";
+"appearance.light"  = "Light";
+"appearance.dark"   = "Dark";
+
+/* About */
+"about.tagline"        = "Provider-pluggable account switcher for Anthropic and OpenAI on macOS.";
+"about.version_format" = "Version %@";
+
+/* Icon picker */
+"icon.use_provider_default" = "Use provider default";
+
+/* Accessibility */
+"a11y.color_format" = "Color %@";
+
+/* Notifications */
+"notif.reminder.title"               = "AISwitch reminder";
+"notif.reminder.body_active_format"   = "You've been on %1$@ (%2$@) for %3$dh. Switch?";
+"notif.reminder.body_inactive_format" = "No %@ profile is active. Pick one?";
+"notif.action.open_switcher"          = "Open Switcher";

@@ -1,0 +1,84 @@
+/* AISwitch — Vietnamese strings */
+
+/* Common */
+"common.ok"     = "OK";
+"common.cancel" = "Hủy";
+"common.save"   = "Lưu";
+"common.add"    = "Thêm";
+"common.edit"   = "Chỉnh sửa…";
+"common.delete" = "Xóa";
+"common.close"  = "Đóng";
+
+/* Menu bar */
+"menu.settings" = "Cài đặt…";
+"menu.quit"     = "Thoát";
+"menu.tooltip"  = "AISwitch — chuyển đổi nhiều tài khoản";
+
+/* Provider section */
+"provider.no_profiles"        = "Chưa có hồ sơ nào";
+"provider.add_account_format" = "Thêm tài khoản %@";
+
+/* Errors */
+"error.switch_failed.title" = "Chuyển đổi thất bại";
+"error.generic"             = "Đã xảy ra lỗi";
+
+/* Add / Edit profile sheet */
+"profile.title.new_format"   = "Hồ sơ %@ mới";
+"profile.title.edit_format"  = "Chỉnh sửa hồ sơ %@";
+
+"profile.field.alias"        = "Tên gọi";
+"profile.field.alias.hint"   = "Công ty A";
+"profile.field.email"        = "Email (tùy chọn)";
+"profile.field.email.hint"   = "ban@example.com";
+"profile.field.color"        = "Màu sắc";
+"profile.field.icon"         = "Biểu tượng";
+"profile.field.surfaces"     = "Ứng dụng quản lý";
+"profile.field.initial_state" = "Trạng thái khởi tạo";
+
+"profile.initial.capture" = "Lưu lại trạng thái hiện tại";
+"profile.initial.empty"   = "Hồ sơ trống (đăng nhập sau)";
+
+/* Surface kind labels */
+"surface.kind.cli"     = "Dòng lệnh";
+"surface.kind.desktop" = "Ứng dụng máy tính";
+
+/* Settings */
+"settings.tab.providers" = "Nhà cung cấp";
+"settings.tab.general"   = "Chung";
+"settings.tab.about"     = "Giới thiệu";
+
+"settings.language"             = "Ngôn ngữ";
+"settings.appearance"           = "Giao diện";
+"settings.launch_at_login"      = "Khởi động cùng macOS";
+"settings.launch_at_login.help" = "Sẽ được kết nối qua SMAppService trong giai đoạn hoàn thiện.";
+
+"settings.reminder.banner"     = "Thông báo nhắc nhở";
+"settings.reminder.every"      = "Mỗi";
+"settings.reminder.hours_unit" = "giờ";
+"settings.force_relogin"       = "Buộc đăng nhập lại thay vì khôi phục snapshot";
+"settings.force_relogin.help"  = "Chỉ dùng khi xác thực gắn phần cứng của nhà cung cấp từ chối token đã lưu.";
+
+/* Language / appearance values */
+"language.system"     = "Theo hệ thống";
+"language.english"    = "English";
+"language.vietnamese" = "Tiếng Việt";
+
+"appearance.system" = "Theo hệ thống";
+"appearance.light"  = "Sáng";
+"appearance.dark"   = "Tối";
+
+/* About */
+"about.tagline"        = "Trình chuyển tài khoản đa nhà cung cấp cho Anthropic và OpenAI trên macOS.";
+"about.version_format" = "Phiên bản %@";
+
+/* Icon picker */
+"icon.use_provider_default" = "Dùng biểu tượng mặc định";
+
+/* Accessibility */
+"a11y.color_format" = "Màu %@";
+
+/* Notifications */
+"notif.reminder.title"               = "Nhắc nhở AISwitch";
+"notif.reminder.body_active_format"   = "Bạn đã dùng %1$@ (%2$@) trong %3$d giờ. Đổi tài khoản?";
+"notif.reminder.body_inactive_format" = "Chưa chọn hồ sơ %@ nào. Chọn một?";
+"notif.action.open_switcher"          = "Mở trình chuyển đổi";
