@@ -29,26 +29,16 @@ PRODUCTS_DIR="$BUILD_DIR/$CONFIG"
 BUILT_APP_PATH="$DERIVED_DATA/Build/Products/$CONFIG/$APP_NAME.app"
 FINAL_APP_PATH="$PRODUCTS_DIR/$APP_NAME.app"
 
-# Re-generate project whenever project.yml is newer than the generated
-# .xcodeproj (or the project doesn't exist yet). Without this, edits to
-# project.yml -- e.g. adding a new resource folder -- won't propagate to
-# builds and you'll be debugging "missing localization" or "missing icon"
-# bugs that are actually stale-project bugs.
-needs_regen=false
-if [[ ! -d "$PROJECT" ]]; then
-    needs_regen=true
-elif [[ "$ROOT/project.yml" -nt "$PROJECT/project.pbxproj" ]]; then
-    needs_regen=true
+# Always regenerate the .xcodeproj from project.yml. It's cheap (~1s) and
+# avoids the "I edited project.yml but the build doesn't pick it up" trap
+# -- a mtime-based staleness check is unreliable because opening the
+# project in Xcode touches pbxproj.
+if ! command -v xcodegen >/dev/null 2>&1; then
+    echo "xcodegen not installed. Run scripts/setup.sh first." >&2
+    exit 1
 fi
-
-if $needs_regen; then
-    if ! command -v xcodegen >/dev/null 2>&1; then
-        echo "xcodegen not installed. Run scripts/setup.sh first." >&2
-        exit 1
-    fi
-    echo "Regenerating AISwitch.xcodeproj from project.yml..."
-    xcodegen generate
-fi
+echo "Generating AISwitch.xcodeproj from project.yml..."
+xcodegen generate
 
 mkdir -p "$BUILD_DIR" "$PRODUCTS_DIR"
 rm -rf "$FINAL_APP_PATH"
@@ -88,6 +78,28 @@ if [[ ! -d "$BUILT_APP_PATH" ]]; then
 fi
 
 cp -R "$BUILT_APP_PATH" "$FINAL_APP_PATH"
+
+# ------------------------------------------------------------------
+# Belt-and-suspenders: ensure .lproj resources are in the bundle.
+#
+# XcodeGen's variant-group detection for `.lproj` directories is finicky
+# across versions; we've seen runs where en.lproj/Localizable.strings
+# never makes it into Contents/Resources/. Manually copying here is
+# a no-op when XcodeGen got it right (cp into an existing dir over
+# identical files), and a fix when it didn't. The runtime Localizer
+# only needs the on-disk layout to be:
+#
+#   AISwitch.app/Contents/Resources/<lang>.lproj/Localizable.strings
+#
+# Format is plain text -- macOS can read .strings without compilation.
+# ------------------------------------------------------------------
+for src_lproj in "$ROOT/Resources/"*.lproj; do
+    [[ -d "$src_lproj" ]] || continue
+    lang_dir="$(basename "$src_lproj")"
+    dst_lproj="$FINAL_APP_PATH/Contents/Resources/$lang_dir"
+    mkdir -p "$dst_lproj"
+    cp -R "$src_lproj/." "$dst_lproj/"
+done
 
 # ------------------------------------------------------------------
 # Sanity-check the built bundle so we don't ship something macOS will
